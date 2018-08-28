@@ -4,8 +4,8 @@ Not the official Android Client for the site AniDub.
 **I recommend** using the API from this(https://github.com/MrCo1T/anidub-api) repository in the place with this client. It has all the necessary functions for this
 
 ### Features ###
-* get anime list
-* get anime episodes
+* load anime list from API(https://github.com/MrCo1T/anidub-api)
+* display anime info
 
 ### Learn More ###
 
