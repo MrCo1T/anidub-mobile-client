@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/details_poster"
+            android:layout_width="111dp"
+            android:layout_height="157dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="118dp"
+            android:layout_marginTop="5dp"
+            android:text="Охуенное аниме"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="118dp" />
+
+        <TextView
+            android:id="@+id/details_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/details_title"
+            android:layout_alignStart="@+id/details_title"
+            android:layout_marginBottom="-25dp"
+            android:layout_marginTop="30dp"
+            android:text="Год"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#666"
+            android:layout_alignLeft="@+id/details_title" />
+
+        <TextView
+            android:id="@+id/details_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/details_year"
+            android:layout_alignStart="@+id/details_title"
+            android:layout_marginBottom="-20dp"
+            android:layout_marginTop="30dp"
+            android:text="Страна"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#666"
+            android:layout_alignLeft="@+id/details_title" />
+
+        <TextView
+            android:id="@+id/details_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/details_country"
+            android:layout_alignStart="@+id/details_title"
+            android:layout_marginBottom="-20dp"
+            android:layout_marginTop="30dp"
+            android:text="Рейтинг"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#666"
+            android:layout_alignLeft="@+id/details_title" />
+
+        <TextView
+            android:id="@+id/details_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/details_rating"
+            android:layout_alignStart="@+id/details_title"
+            android:layout_marginBottom="-20dp"
+            android:layout_marginTop="30dp"
+            android:text="Жанр"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#666"
+            android:layout_alignLeft="@+id/details_title" />
+
+        <TextView
+            android:id="@+id/details_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/poster"
+            android:layout_alignStart="@+id/poster"
+            android:layout_marginTop="167dp"
+            android:text="Описание"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#666"
+            android:layout_alignLeft="@+id/poster" />
+
+        <Button
+            android:id="@+id/play_online"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@+id/details_description"
+            android:text="Смотреть онлайн" />
+
+</RelativeLayout>
