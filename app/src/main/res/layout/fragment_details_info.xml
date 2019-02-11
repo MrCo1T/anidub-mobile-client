@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/details_title_ru"
+                    style="@style/TitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:text="Заголовок"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/details_title_en"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:text="Title"
+                    android:textColor="#8c8d94"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/card_margin_horizontal"
+                android:layout_marginRight="@dimen/card_margin_horizontal"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp">
+
+                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/details_poster_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="232dp"
+                        android:scaleType="centerCrop"
+                        android:tint="#6F000000"/>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="25dp"
+                        android:layout_marginLeft="@dimen/card_margin_horizontal"
+                        android:layout_marginRight="@dimen/card_margin_horizontal"
+                        android:layout_marginBottom="20dp"
+
+                        app:cardCornerRadius="7dp"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/details_poster"
+                            android:layout_width="131dp"
+                            android:layout_height="182dp"
+                            android:scaleType="centerCrop"/>
+                    </android.support.v7.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="182dp"
+                        android:layout_marginLeft="170dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="25dp"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="Год"
+                                style="@style/TitleText"/>
+                            <TextView
+                                android:id="@+id/details_year"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="2018"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="5dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="Страна"
+                                style="@style/TitleText"/>
+                            <TextView
+                                android:id="@+id/details_country"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="Япония"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="5dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="Рейтинг"
+                                style="@style/TitleText"/>
+                            <TextView
+                                android:id="@+id/details_rating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="100%"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="5dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="Жанр"
+                                style="@style/TitleText"/>
+                            <TextView
+                                android:id="@+id/details_genre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="daasd"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </FrameLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="25dp">
+
+            <TextView
+                style="@style/TitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:text="Описание"
+                android:textColor="#444655"
+                android:textSize="22sp" />
+
+            <com.ctetin.expandabletextviewlibrary.ExpandableTextView
+                android:id="@+id/details_description"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:textColor="#444655"
+                app:ep_contract_color="@color/colorAccent"
+                app:ep_contract_text="меньше"
+                app:ep_end_color="@color/colorAccent"
+                app:ep_expand_color="@color/colorAccent"
+                app:ep_expand_text="больше"
+                app:ep_link_color="@color/colorAccent"
+                app:ep_link_res="@color/colorAccent"
+                app:ep_max_line="6"
+                app:ep_mention_color="@color/colorAccent"
+                app:ep_need_animation="true"
+                app:ep_need_contract="true"
+                app:ep_need_expand="true"
+                app:ep_need_link="true"
+                app:ep_need_mention="true"
+                app:ep_need_self="true"
+                app:ep_self_color="@color/colorAccent" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

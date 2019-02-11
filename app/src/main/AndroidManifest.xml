@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ru.mrcolt.anidubmobile">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,27 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:screenOrientation="portrait"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".activities.SplashScreenActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.DetailsActivity"/>
+        <activity android:name=".activities.MainActivity"/>
+        <activity android:name=".activities.SearchActivity"/>
         <activity
-            android:name=".activities.MainActivity"
-            android:theme="@style/MediaNoActionBarTheme" />
-        <activity
-            android:name=".activities.SearchActivity"
-            android:theme="@style/MediaNoActionBarTheme" />
-        <activity
-            android:name=".activities.MediaDetailsActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:theme="@style/MediaNoActionBarTheme" />
+            android:name=".activities.VideoPlayerActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>
