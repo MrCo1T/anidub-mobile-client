@@ -8,20 +8,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.hls.HlsMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
 import ru.mrcolt.anidubmobile.R;
-
-import static com.google.android.exoplayer2.DefaultRenderersFactory.EXTENSION_RENDERER_MODE_ON;
 
 public class VideoPlayerActivity extends AppCompatActivity {
     private PlayerView playerView;
@@ -42,7 +39,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
         }
     }
 
-    private void  initComponents() throws Exception {
+    private void initComponents() throws Exception {
         player = ExoPlayerFactory.newSimpleInstance(this, new DefaultRenderersFactory(this.getApplicationContext(), DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER), new DefaultTrackSelector());
     }
 
@@ -54,7 +51,9 @@ public class VideoPlayerActivity extends AppCompatActivity {
         playerView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
         playerView.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
         String valor = getIntent().getExtras().getString("url");
-        DefaultDataSourceFactory dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "ExoPlayer"));
+        DefaultHttpDataSourceFactory httpDataSourceFactory = new DefaultHttpDataSourceFactory("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0", null);
+        httpDataSourceFactory.getDefaultRequestProperties().set("Referer", "https://anime.anidub.com");
+        DefaultDataSourceFactory dataSourceFactory = new DefaultDataSourceFactory(this, null, httpDataSourceFactory);
         HlsMediaSource archivoMultimedia = new HlsMediaSource.Factory(dataSourceFactory)
                 .createMediaSource(Uri.parse(valor));
         player.prepare(archivoMultimedia);

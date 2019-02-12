@@ -9,7 +9,7 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 
-public class BlurUtil {
+public class BlurUtils {
     private static final float BITMAP_SCALE = 0.4f;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)

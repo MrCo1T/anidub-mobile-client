@@ -27,79 +27,94 @@
     <session id="-188560123">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.46" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="2" />
-          <entry key="gradle" value="12" />
-          <entry key="java" value="78" />
+          <entry key="class" value="4" />
+          <entry key="gradle" value="13" />
+          <entry key="java" value="89" />
           <entry key="otf" value="2" />
-          <entry key="xml" value="96" />
+          <entry key="xml" value="105" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="2" />
+          <entry key="CLASS" value="4" />
           <entry key="Font" value="2" />
-          <entry key="Groovy" value="12" />
-          <entry key="JAVA" value="78" />
-          <entry key="XML" value="96" />
+          <entry key="Groovy" value="13" />
+          <entry key="JAVA" value="89" />
+          <entry key="XML" value="105" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="18" />
-          <entry key="gradle" value="56" />
-          <entry key="java" value="2650" />
-          <entry key="xml" value="2985" />
+          <entry key="dummy" value="20" />
+          <entry key="gradle" value="59" />
+          <entry key="java" value="3554" />
+          <entry key="xml" value="3321" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Groovy" value="56" />
-          <entry key="JAVA" value="2650" />
-          <entry key="PLAIN_TEXT" value="18" />
-          <entry key="XML" value="2985" />
+          <entry key="Groovy" value="59" />
+          <entry key="JAVA" value="3554" />
+          <entry key="PLAIN_TEXT" value="20" />
+          <entry key="XML" value="3321" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_details.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_media_list.xml">
-          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="78" column="12" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="12" />
+            <state relative-caret-position="184">
+              <caret line="53" column="55" lean-forward="true" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details_info.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="72" column="29" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/adapters/MediaListAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="66" column="50" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/fragments/DetailsInfoFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,26 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="32" column="59" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_search_filled.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="36" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_star.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="26" selection-start-column="26" selection-end-column="26" />
+            <state relative-caret-position="281">
+              <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -134,8 +131,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="63" column="55" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
+            <state>
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,7 +160,6 @@
       <find>HlsMediaSource</find>
       <find>compile</find>
       <find>test</find>
-      <find>gra</find>
       <find>grav</find>
       <find>ru.mrcolt.anidubmobile.views.RegularTextView</find>
       <find>ru.mrcolt.anidubmobile.views.BoldTextView</find>
@@ -172,6 +167,8 @@
       <find>card</find>
       <find>fff</find>
       <find>f8</find>
+      <find>progress</find>
+      <find>gra</find>
     </findStrings>
     <replaceStrings>
       <replace>TextView</replace>
@@ -188,8 +185,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/helpers/FontCacheHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/fragments/EpisodesListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_video_player.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/VideoPlayerActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-v21/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/views/BoldTextView.java" />
@@ -207,32 +202,37 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/ProgressDialog.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/views/JustifiedTextView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/views/RegularTabLayout.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/fragments/DetailsInfoFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/models/MediaListModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_back_arrow.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_arrow_back.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_details_info.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/DetailsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/SplashScreenActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/adapters/MediaListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/DividerItemDecoration.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/ListDividerItemDecoration.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/line_devider.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_search.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_details.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_star.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/VideoPlayerActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/BlurUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/fragments/ListViewStateFragment.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_media_list.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/adapters/MediaListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/fragments/DetailsInfoFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_details_info.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="170" />
-    <option name="y" value="-20" />
+    <option name="x" value="117" />
+    <option name="y" value="-19" />
     <option name="width" value="1750" />
     <option name="height" value="965" />
   </component>
@@ -242,13 +242,17 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
               <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
@@ -273,28 +277,7 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="anidubmobile" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="adapters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="anidubmobile" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="anidubmobile" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="listeners" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="anidubmobile" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
@@ -312,38 +295,13 @@
               <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="font" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="menu" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
-              <item name="strings" type="c431d0b8:AndroidResGroupNode" />
             </path>
             <path>
               <item name="anidubmobile" type="1abcf292:AndroidViewProjectNode" />
@@ -353,6 +311,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -465,7 +424,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" />
       <window_info id="Image Layers" order="1" />
@@ -477,11 +435,11 @@
       <window_info id="Captures" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Logcat" order="0" weight="0.32867134" />
       <window_info anchor="bottom" id="TODO" order="1" />
-      <window_info anchor="bottom" id="Debug" order="2" weight="0.22657342" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.18181819" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Version Control" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="6" visible="true" weight="0.21678321" />
+      <window_info anchor="bottom" id="Build" order="6" visible="true" weight="0.2013986" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32867134" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Run" order="9" weight="0.32867134" />
@@ -497,58 +455,11 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-v21/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/views/BoldTextView.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_naruto_filled.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Dachshund-Tab-Layout-v0.3.3.aar/1164b18c393c46e11a07b554bd1e32e2/jars/classes.jar!/com/kekstudio/dachshundtablayout/DachshundTabLayout.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1285">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/volley/build.gradle" />
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/down_to_up.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/layout_animation_down_to_up.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/BaseDialog.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/ProgressDialog.java" />
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/app/ProgressDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="976">
           <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/DialogUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -596,47 +507,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/fragments/DetailsInfoFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="50" column="46" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash_screen.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_episodes_list.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_episodes_list.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/player_control_view.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" selection-start-line="15" selection-end-line="26" selection-end-column="54" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/models/MediaListModel.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -652,31 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="60" selection-start-line="55" selection-start-column="60" selection-end-line="55" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details_info.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/adapters/MediaListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="47" column="56" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/graphics/drawable/Drawable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -684,23 +560,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/ListDividerItemDecoration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/line_devider.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/ListDividerItemDecoration.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/line_devider.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_arrow_back.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -726,43 +587,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="423">
           <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="63" column="55" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_details.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
+        <state relative-caret-position="493">
           <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
+        <state relative-caret-position="799">
           <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_search_filled.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -773,27 +628,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_search_filled.xml">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.exoplayer/extension-okhttp/2.9.4/cde2fcf37850659943b9ad81ca380412ecad66db/extension-okhttp-2.9.4-sources.jar!/com/google/android/exoplayer2/ext/okhttp/OkHttpDataSourceFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="36" />
+        <state relative-caret-position="202">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/HttpUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.exoplayer/exoplayer-core/2.9.4/571f88ae42bd74a49fe9516c24b948afcfc463ab/exoplayer-core-2.9.4-sources.jar!/com/google/android/exoplayer2/upstream/DefaultHttpDataSourceFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-325">
+          <caret line="52" column="86" selection-start-line="52" selection-start-column="86" selection-end-line="52" selection-end-column="86" />
+          <folding>
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1673#1674#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/VideoPlayerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/DialogUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/fragments/ListViewStateFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="43" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/utils/BlurUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/16d9e0e586667c0764b0f07f109dacff/jars/classes.jar!/android/support/v7/widget/RecyclerView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="5765" column="26" selection-start-line="5765" selection-start-column="26" selection-end-line="5765" selection-end-column="26" />
+          <folding>
+            <element signature="e#226348#226349#0" expanded="true" />
+            <element signature="e#226383#226384#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/16d9e0e586667c0764b0f07f109dacff/jars/classes.jar!/android/support/v7/widget/LinearLayoutManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="125" column="22" selection-start-line="125" selection-start-column="22" selection-end-line="125" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="56" column="72" selection-start-line="56" selection-start-column="72" selection-end-line="56" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="32" column="59" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
+        <state relative-caret-position="281">
+          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_media_list.xml">
-      <provider editor-type-id="android-designer2" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="78" column="12" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="12" />
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/adapters/MediaListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="66" column="50" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ru/mrcolt/anidubmobile/fragments/DetailsInfoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details_info.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="72" column="29" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_media_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="53" column="55" lean-forward="true" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
 </project>

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +28,7 @@ import ru.mrcolt.anidubmobile.R;
 import ru.mrcolt.anidubmobile.activities.VideoPlayerActivity;
 import ru.mrcolt.anidubmobile.adapters.EpisodesListAdapter;
 import ru.mrcolt.anidubmobile.models.EpisodesListModel;
-import ru.mrcolt.anidubmobile.utils.HttpUtil;
-
-import static android.support.constraint.Constraints.TAG;
+import ru.mrcolt.anidubmobile.utils.HttpUtils;
 
 public class EpisodesListFragment extends Fragment {
 
@@ -101,8 +98,8 @@ public class EpisodesListFragment extends Fragment {
 
     private void prepareEpisode(String body) throws JSONException {
         String chunkURL = body.split("\n")[2];
-        HttpUtil okHttpUtil = new HttpUtil();
-        okHttpUtil.getAnidubRequest(chunkURL, new HttpUtil.OKHttpNetwork() {
+        HttpUtils okHttpUtils = new HttpUtils();
+        okHttpUtils.getAnidubRequest(chunkURL, new HttpUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 String preparedChunk = prepareChunk(body, chunkURL);
@@ -124,8 +121,8 @@ public class EpisodesListFragment extends Fragment {
     }
 
     private void loadEpisode(String url) {
-        HttpUtil okHttpUtil = new HttpUtil();
-        okHttpUtil.getAnidubRequest(url, new HttpUtil.OKHttpNetwork() {
+        HttpUtils okHttpUtils = new HttpUtils();
+        okHttpUtils.getAnidubRequest(url, new HttpUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 try {
@@ -158,8 +155,8 @@ public class EpisodesListFragment extends Fragment {
     }
 
     private void loadMediaEpisodesList(String newsID) {
-        HttpUtil okHttpUtil = new HttpUtil();
-        okHttpUtil.getAPIRequest("http://anidub-de.mrcolt.ru/media/episodes?news_id=" + newsID, new HttpUtil.OKHttpNetwork() {
+        HttpUtils okHttpUtils = new HttpUtils();
+        okHttpUtils.getAPIRequest("http://anidub-de.mrcolt.ru/media/episodes?news_id=" + newsID, new HttpUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 try {

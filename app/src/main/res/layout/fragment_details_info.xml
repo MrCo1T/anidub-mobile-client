@@ -60,7 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="232dp"
                         android:scaleType="centerCrop"
-                        android:tint="#6F000000"/>
+                        android:tint="#6F000000" />
 
                     <android.support.v7.widget.CardView
                         android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
                             android:id="@+id/details_poster"
                             android:layout_width="131dp"
                             android:layout_height="182dp"
-                            android:scaleType="centerCrop"/>
+                            android:scaleType="centerCrop" />
                     </android.support.v7.widget.CardView>
 
                     <LinearLayout
@@ -87,76 +87,109 @@
                         android:layout_marginTop="25dp"
                         android:layout_marginRight="25dp"
                         android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
+
                             <TextView
+                                style="@style/TitleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#fff"
                                 android:text="Год"
-                                style="@style/TitleText"/>
+                                android:textColor="#fff" />
+
                             <TextView
                                 android:id="@+id/details_year"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#fff"
-                                android:text="2018"/>
+                                android:text="2018"
+                                android:textColor="#fff" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginTop="5dp">
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical">
+
                             <TextView
+                                style="@style/TitleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#fff"
                                 android:text="Страна"
-                                style="@style/TitleText"/>
+                                android:textColor="#fff" />
+
                             <TextView
                                 android:id="@+id/details_country"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#fff"
-                                android:text="Япония"/>
+                                android:text="Япония"
+                                android:textColor="#fff" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginTop="5dp">
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical">
+
                             <TextView
+                                style="@style/TitleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#fff"
                                 android:text="Рейтинг"
-                                style="@style/TitleText"/>
-                            <TextView
-                                android:id="@+id/details_rating"
+                                android:textColor="#fff" />
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#fff"
-                                android:text="100%"/>
+                                android:orientation="horizontal">
+
+                                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                                    android:id="@+id/details_rating_bar"
+                                    style="@style/RatingBar"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="3dp"
+                                    android:layout_marginRight="3dp"
+                                    android:numStars="5"
+                                    android:progressBackgroundTint="#8c8d94"
+                                    android:progressTint="#fff"
+                                    android:rating="1"
+                                    android:secondaryProgressTint="#fff"
+                                    android:stepSize="0.1" />
+
+                                <TextView
+                                    android:id="@+id/details_rating"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="100%"
+                                    android:textColor="#fff" />
+                            </LinearLayout>
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginTop="5dp">
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical">
+
                             <TextView
+                                style="@style/TitleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#fff"
                                 android:text="Жанр"
-                                style="@style/TitleText"/>
+                                android:textColor="#fff" />
+
                             <TextView
                                 android:id="@+id/details_genre"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#fff"
-                                android:text="daasd"/>
+                                android:text="daasd"
+                                android:textColor="#fff" />
                         </LinearLayout>
                     </LinearLayout>
 

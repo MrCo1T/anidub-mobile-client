@@ -2,9 +2,6 @@ package ru.mrcolt.anidubmobile.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +11,10 @@ import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.budiyev.android.imageloader.ImageLoader;
-import com.budiyev.android.imageloader.ImageRequestDelegate;
 
 import java.util.List;
 
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 import ru.mrcolt.anidubmobile.R;
 import ru.mrcolt.anidubmobile.activities.DetailsActivity;
 import ru.mrcolt.anidubmobile.models.MediaListModel;
@@ -45,18 +42,21 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
     public void onBindViewHolder(ViewHolder holder, final int position) {
         MediaListModel current = data.get(position);
 
-        holder.film_title.setText(current.getTitleRU());
-        holder.film_rating.setText(current.getRating());
-        holder.film_episodes.setText(current.getEpisode());
-        holder.film_genre.setText(current.getGenre());
+        String currentTitleRU = current.getTitleRU();
+        String currentRating = current.getRating();
+        String currentGenre = current.getGenre();
+        holder.film_title.setText(currentTitleRU);
+        holder.film_rating.setText(currentRating);
+        holder.film_genre.setText(currentGenre);
 
-//        holder.film_poster.setImageURI(Uri.parse(current.getPoster()));
+        float ratingBar = ((currentRating.contains("%")) ? Float.parseFloat(currentRating.replace("%", ""))/20 : Float.parseFloat(currentRating));
+
+        holder.film_rating_bar.setRating(ratingBar);
 
         ImageLoader
                 .with(context)
                 .from(current.getPoster())
                 .load(holder.film_poster);
-
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);
@@ -64,6 +64,7 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
             intent.putExtra("Poster", current.getPoster());
             intent.putExtra("TitleRU", current.getTitleRU());
             intent.putExtra("TitleEN", current.getTitleEN());
+            intent.putExtra("RatingBar", ratingBar);
             intent.putExtra("Rating", current.getRating());
             intent.putExtra("Year", current.getYear());
             intent.putExtra("Genre", current.getGenre());
@@ -86,16 +87,16 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView film_poster;
-        TextView film_title, film_year, film_rating, film_episodes, film_genre;
-        CardView cardView;
+        TextView film_title, film_rating, film_genre;
+        MaterialRatingBar film_rating_bar;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             film_poster = itemView.findViewById(R.id.poster);
             film_title = itemView.findViewById(R.id.title);
+            film_rating_bar = itemView.findViewById(R.id.rating_bar);
             film_rating = itemView.findViewById(R.id.rating);
-            film_episodes = itemView.findViewById(R.id.episodes);
             film_genre = itemView.findViewById(R.id.genres);
         }
     }

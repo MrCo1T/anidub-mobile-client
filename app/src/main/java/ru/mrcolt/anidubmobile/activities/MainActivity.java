@@ -1,14 +1,18 @@
 package ru.mrcolt.anidubmobile.activities;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -24,10 +28,13 @@ import ru.mrcolt.anidubmobile.adapters.MediaListAdapter;
 import ru.mrcolt.anidubmobile.listeners.EndlessScrollListener;
 import ru.mrcolt.anidubmobile.models.MediaListModel;
 import ru.mrcolt.anidubmobile.utils.DialogUtils;
-import ru.mrcolt.anidubmobile.utils.HttpUtil;
+import ru.mrcolt.anidubmobile.utils.HttpUtils;
 
 public class MainActivity extends AppCompatActivity {
 
+    public final static String LIST_STATE_KEY = "recycler_list_state";
+    public Bundle recyclerViewState;
+    Parcelable listState;
     private List<MediaListModel> mediaListModels = new ArrayList<MediaListModel>();
     private RecyclerView recyclerView;
     private MediaListAdapter mediaListAdapter;
@@ -35,13 +42,45 @@ public class MainActivity extends AppCompatActivity {
     private DialogUtils dialogUtils = new DialogUtils();
     private ProgressDialog progressDialog;
 
+    protected void onSaveInstanceState(Bundle state) {
+        super.onSaveInstanceState(state);
+        // Save list state
+        listState = linearLayoutManager.onSaveInstanceState();
+        state.putParcelable(LIST_STATE_KEY, listState);
+    }
+
+    protected void onRestoreInstanceState(Bundle state) {
+        super.onRestoreInstanceState(state);
+        // Retrieve list state and list/item positions
+        if (state != null) listState = state.getParcelable(LIST_STATE_KEY);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (listState != null) {
+            linearLayoutManager.onRestoreInstanceState(listState);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        linearLayoutManager.onSaveInstanceState();
+    }
+
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        return super.onCreateView(name, context, attrs);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-        progressDialog = dialogUtils.createLoading(this, "", "Загрузка");
+//        progressDialog = dialogUtils.createLoading(this, "", "Загрузка");
 
         try {
             initComponents();
@@ -101,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadMediaList(int page) {
-        HttpUtil okHttpUtil = new HttpUtil();
-        okHttpUtil.getAPIRequest("http://anidub-ru.mrcolt.ru/media?page=" + String.valueOf(page), new HttpUtil.OKHttpNetwork() {
+        HttpUtils okHttpUtils = new HttpUtils();
+        okHttpUtils.getAPIRequest("http://anidub-ru.mrcolt.ru/media?page=" + String.valueOf(page), new HttpUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 try {
@@ -139,6 +178,6 @@ public class MainActivity extends AppCompatActivity {
                     jsonData.getString("news_id")));
         }
         runOnUiThread(() -> mediaListAdapter.notifyItemInserted(mediaListModels.size()));
-        dialogUtils.destroyLoading(progressDialog);
+//        dialogUtils.destroyLoading(progressDialog);
     }
 }
