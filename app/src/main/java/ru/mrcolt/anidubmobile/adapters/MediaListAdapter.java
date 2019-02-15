@@ -78,7 +78,6 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
         });
     }
 
-
     @Override
     public int getItemCount() {
         return data.size();

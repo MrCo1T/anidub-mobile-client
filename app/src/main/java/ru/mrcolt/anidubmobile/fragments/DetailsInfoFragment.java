@@ -13,8 +13,6 @@ import com.budiyev.android.imageloader.ImageLoader;
 import com.budiyev.android.imageloader.LoadCallback;
 import com.ctetin.expandabletextviewlibrary.ExpandableTextView;
 
-import java.lang.reflect.Type;
-
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 import ru.mrcolt.anidubmobile.R;
 import ru.mrcolt.anidubmobile.utils.BlurUtils;
@@ -27,6 +25,7 @@ public class DetailsInfoFragment extends Fragment {
     Float RatingBar;
     MaterialRatingBar film_rating_bar;
     View view;
+
     public DetailsInfoFragment() {
     }
 

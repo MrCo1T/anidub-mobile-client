@@ -37,7 +37,8 @@ public class EpisodesListFragment extends Fragment {
     OkHttpClient okHttpClient = new OkHttpClient();
     ListView listView;
 
-    public EpisodesListFragment() {}
+    public EpisodesListFragment() {
+    }
 
     public static EpisodesListFragment newInstance() {
         return new EpisodesListFragment();
@@ -93,7 +94,7 @@ public class EpisodesListFragment extends Fragment {
 
     private String prepareChunk(String chunk, String chunkURL) {
         String cdnURL = chunkURL.split("chunk.m3u8")[0];
-        return chunk.replaceAll("n_", cdnURL + "n_").replaceAll("URI=\"(.*?)\"", "URI=\"http://anidub-ru.mrcolt.ru/player/decode\"");
+        return chunk.replaceAll("n_", cdnURL + "n_");
     }
 
     private void prepareEpisode(String body) throws JSONException {

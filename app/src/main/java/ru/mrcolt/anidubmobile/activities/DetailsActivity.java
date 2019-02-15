@@ -44,12 +44,10 @@ public class DetailsActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.details_view_pager);
         tabLayout = findViewById(R.id.tab_layout);
         toolbar = findViewById(R.id.details_toolbar);
-//        titleToolbar = findViewById(R.id.details_toolbar_title);
         detailsViewPagerAdapter = new DetailsViewPagerAdapter(this, getSupportFragmentManager());
     }
 
     private void configComponents() {
-//        titleToolbar.setText(getIntent().getExtras().getString("TitleRU"));
         viewPager.setAdapter(detailsViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }

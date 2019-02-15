@@ -34,6 +34,9 @@ public class VideoPlayerActivity extends AppCompatActivity {
         playerView = findViewById(R.id.video_view);
         try {
             initComponents();
+            configComponents();
+            initPlayer();
+            hideUI();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,13 +46,15 @@ public class VideoPlayerActivity extends AppCompatActivity {
         player = ExoPlayerFactory.newSimpleInstance(this, new DefaultRenderersFactory(this.getApplicationContext(), DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER), new DefaultTrackSelector());
     }
 
-    private void initializePlayer() {
+    private void configComponents() {
         playerView.setPlayer(player);
-        player.setPlayWhenReady(true);
-        player.seekTo(currentWindow, playbackPosition);
-        hideUI();
         playerView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
         playerView.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+        player.setPlayWhenReady(true);
+        player.seekTo(currentWindow, playbackPosition);
+    }
+
+    private void initPlayer() {
         String valor = getIntent().getExtras().getString("url");
         DefaultHttpDataSourceFactory httpDataSourceFactory = new DefaultHttpDataSourceFactory("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0", null);
         httpDataSourceFactory.getDefaultRequestProperties().set("Referer", "https://anime.anidub.com");
@@ -73,7 +78,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         if (Util.SDK_INT > 23) {
-            initializePlayer();
+            configComponents();
         }
     }
 
@@ -81,7 +86,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         if ((Util.SDK_INT <= 23 || player == null)) {
-            initializePlayer();
+            configComponents();
         }
     }
 
