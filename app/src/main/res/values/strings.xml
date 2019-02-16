@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Anidub Mobile</string>
+    <string name="anidub">Anidub Mobile</string>
+    <string name="poster">Постер</string>
 </resources>
