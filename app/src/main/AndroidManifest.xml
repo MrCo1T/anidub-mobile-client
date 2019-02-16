@@ -18,18 +18,25 @@
 
         <activity
             android:name="ru.mrcolt.anidub.activities.SplashScreenActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ru.mrcolt.anidub.activities.DetailsActivity"/>
-        <activity android:name="ru.mrcolt.anidub.activities.MainActivity"/>
-        <activity android:name="ru.mrcolt.anidub.activities.SearchActivity"/>
         <activity
-            android:name="ru.mrcolt.anidub.activities.VideoPlayerActivity"
-            android:screenOrientation="landscape"/>
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:name="ru.mrcolt.anidub.activities.DetailsActivity"/>
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:name="ru.mrcolt.anidub.activities.MainActivity"/>
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:name="ru.mrcolt.anidub.activities.SearchActivity"/>
+        <activity
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:name="ru.mrcolt.anidub.activities.VideoPlayerActivity"/>
     </application>
 
 </manifest>

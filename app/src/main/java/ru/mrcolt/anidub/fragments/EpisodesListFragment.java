@@ -1,5 +1,6 @@
 package ru.mrcolt.anidub.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,19 +24,21 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import okhttp3.OkHttpClient;
 import ru.mrcolt.anidub.R;
 import ru.mrcolt.anidub.activities.VideoPlayerActivity;
 import ru.mrcolt.anidub.adapters.EpisodesListAdapter;
 import ru.mrcolt.anidub.models.EpisodesListModel;
+import ru.mrcolt.anidub.utils.DialogUtils;
 import ru.mrcolt.anidub.utils.HttpUtils;
 
 public class EpisodesListFragment extends Fragment {
 
-    View view;
-    ArrayList<EpisodesListModel> episodesListModel = new ArrayList<>();
-    OkHttpClient okHttpClient = new OkHttpClient();
-    ListView listView;
+    private View view;
+    private ArrayList<EpisodesListModel> episodesListModel = new ArrayList<>();
+    private ListView listView;
+    private EpisodesListModel episode;
+    private DialogUtils dialogUtils = new DialogUtils();
+    private ProgressDialog progressDialog;
 
     public EpisodesListFragment() {
     }
@@ -53,8 +56,9 @@ public class EpisodesListFragment extends Fragment {
         return getActivity().getIntent().getExtras().getString(name);
     }
 
-    private void playVideo(String url) {
+    private void playVideo(String title, String url) {
         Intent intent = new Intent(getContext(), VideoPlayerActivity.class);
+        intent.putExtra("title", title);
         intent.putExtra("url", url);
         startActivity(intent);
     }
@@ -67,8 +71,9 @@ public class EpisodesListFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                EpisodesListModel episode = episodesListModel.get(i);
+                episode = episodesListModel.get(i);
                 loadEpisode(episode.getURL());
+                progressDialog = dialogUtils.createLoading(getContext(), "Загрузка эпизода");
             }
         });
 
@@ -98,7 +103,7 @@ public class EpisodesListFragment extends Fragment {
     }
 
     private void prepareEpisode(String body) throws JSONException {
-        String chunkURL = body.split("\n")[2];
+        String chunkURL = body.split("\n")[2].replaceAll("https://(.*?).anivid", "https://cdn100.anivid");
         HttpUtils okHttpUtils = new HttpUtils();
         okHttpUtils.getAnidubRequest(chunkURL, new HttpUtils.OKHttpNetwork() {
             @Override
@@ -106,7 +111,8 @@ public class EpisodesListFragment extends Fragment {
                 String preparedChunk = prepareChunk(body, chunkURL);
                 try {
                     String chunkFilePath = createTempFile(preparedChunk);
-                    playVideo(chunkFilePath);
+                    dialogUtils.destroyLoading(progressDialog);
+                    playVideo(episode.getTitle(), chunkFilePath);
                 } catch (IOException e) {
                     Objects.requireNonNull(getActivity()).runOnUiThread(() -> Toast.makeText(getContext(), "Не могу создать данные для эпизода", Toast.LENGTH_LONG).show());
                     e.printStackTrace();

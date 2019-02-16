@@ -24,7 +24,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/notosans_bold"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/poster"
@@ -76,6 +76,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/light" />
+        android:background="@color/light"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"/>
 
 </LinearLayout>

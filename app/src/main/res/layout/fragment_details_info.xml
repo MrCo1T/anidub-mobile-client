@@ -30,7 +30,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
                     android:text="Заголовок"
-                    android:textSize="22sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/details_title_en"
@@ -159,6 +159,7 @@
                                     android:progressBackgroundTint="#8c8d94"
                                     android:progressTint="#fff"
                                     android:rating="1"
+                                    android:isIndicator="true"
                                     android:secondaryProgressTint="#fff"
                                     android:stepSize="0.1" />
 
@@ -215,7 +216,7 @@
                 android:layout_marginBottom="5dp"
                 android:text="Описание"
                 android:textColor="#444655"
-                android:textSize="22sp" />
+                android:textSize="18sp" />
 
             <com.ctetin.expandabletextviewlibrary.ExpandableTextView
                 android:id="@+id/details_description"
