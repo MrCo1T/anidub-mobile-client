@@ -61,7 +61,7 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.media_search_list_id);
         mediaSearchListAdapter = new MediaSearchListAdapter(this, mediaSearchListModels);
         linearLayoutManager = new LinearLayoutManager(this);
-    }  
+    }
 
     private void configComponents() throws Exception {
         searchTitle.setText(getIntent().getExtras().getString("query"));
