@@ -26,7 +26,7 @@ import ru.mrcolt.anidub.R;
 import ru.mrcolt.anidub.adapters.MediaSearchListAdapter;
 import ru.mrcolt.anidub.listeners.EndlessScrollListener;
 import ru.mrcolt.anidub.models.MediaSearchListModel;
-import ru.mrcolt.anidub.utils.HttpUtils;
+import ru.mrcolt.anidub.utils.NetworkUtils;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -130,8 +130,8 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void loadMediaSearchList(String query, int page) {
-        HttpUtils okHttpUtils = new HttpUtils();
-        okHttpUtils.getAPIRequest("http://anidub-de.mrcolt.ru/media/search?q=" + query + "&page=" + String.valueOf(page), new HttpUtils.OKHttpNetwork() {
+        NetworkUtils okNetworkUtils = new NetworkUtils();
+        okNetworkUtils.getAPIRequest("http://anidub-de.mrcolt.ru/media/search?q=" + query + "&page=" + String.valueOf(page), new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 try {

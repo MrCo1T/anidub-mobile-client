@@ -29,7 +29,7 @@ import ru.mrcolt.anidub.activities.VideoPlayerActivity;
 import ru.mrcolt.anidub.adapters.EpisodesListAdapter;
 import ru.mrcolt.anidub.models.EpisodesListModel;
 import ru.mrcolt.anidub.utils.DialogUtils;
-import ru.mrcolt.anidub.utils.HttpUtils;
+import ru.mrcolt.anidub.utils.NetworkUtils;
 
 public class EpisodesListFragment extends Fragment {
 
@@ -104,8 +104,8 @@ public class EpisodesListFragment extends Fragment {
 
     private void prepareEpisode(String body) throws JSONException {
         String chunkURL = body.split("\n")[2].replaceAll("https://(.*?).anivid", "https://cdn100.anivid");
-        HttpUtils okHttpUtils = new HttpUtils();
-        okHttpUtils.getAnidubRequest(chunkURL, new HttpUtils.OKHttpNetwork() {
+        NetworkUtils okNetworkUtils = new NetworkUtils();
+        okNetworkUtils.getAnidubRequest(chunkURL, new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 String preparedChunk = prepareChunk(body, chunkURL);
@@ -128,8 +128,8 @@ public class EpisodesListFragment extends Fragment {
     }
 
     private void loadEpisode(String url) {
-        HttpUtils okHttpUtils = new HttpUtils();
-        okHttpUtils.getAnidubRequest(url, new HttpUtils.OKHttpNetwork() {
+        NetworkUtils okNetworkUtils = new NetworkUtils();
+        okNetworkUtils.getAnidubRequest(url, new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 try {
@@ -162,8 +162,8 @@ public class EpisodesListFragment extends Fragment {
     }
 
     private void loadMediaEpisodesList(String newsID) {
-        HttpUtils okHttpUtils = new HttpUtils();
-        okHttpUtils.getAPIRequest("http://anidub-de.mrcolt.ru/media/episodes?news_id=" + newsID, new HttpUtils.OKHttpNetwork() {
+        NetworkUtils okNetworkUtils = new NetworkUtils();
+        okNetworkUtils.getAPIRequest("http://anidub-de.mrcolt.ru/media/episodes?news_id=" + newsID, new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 try {
