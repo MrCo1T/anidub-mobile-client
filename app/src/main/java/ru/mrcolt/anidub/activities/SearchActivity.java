@@ -43,19 +43,17 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         searchQuery = getIntent().getExtras().getString("query");
-        try {
-            initComponents();
-            configComponents();
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        initComponents();
+        configComponents();
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         loadMediaSearchList(searchQuery, 1);
     }
 
-    private void initComponents() throws Exception {
+    private void initComponents() {
         toolbar = findViewById(R.id.search_toolbar);
         searchTitle = findViewById(R.id.search_title);
         recyclerView = findViewById(R.id.media_search_list_id);
@@ -63,7 +61,7 @@ public class SearchActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);
     }
 
-    private void configComponents() throws Exception {
+    private void configComponents() {
         searchTitle.setText(getIntent().getExtras().getString("query"));
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(mediaSearchListAdapter);
@@ -101,7 +99,6 @@ public class SearchActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setSubmitButtonEnabled(true);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -120,12 +117,7 @@ public class SearchActivity extends AppCompatActivity {
             }
 
         });
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                return true;
-            }
-        });
+        searchView.setOnCloseListener(() -> true);
         return true;
     }
 

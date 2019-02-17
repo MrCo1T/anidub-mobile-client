@@ -46,17 +46,15 @@ public class EpisodesListAdapter extends BaseAdapter {
             convertView = inflate.inflate(R.layout.item_episodes_list, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.title = convertView.findViewById(R.id.episode_title);
-            viewHolder.services = convertView.findViewById(R.id.episode_services);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.title.setText(objDataModel.getTitle());
-        viewHolder.services.setText(objDataModel.getServices());
         return convertView;
     }
 
     public class ViewHolder {
-        TextView title, services;
+        TextView title;
     }
 }

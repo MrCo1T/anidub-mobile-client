@@ -28,18 +28,14 @@
                     style="@style/TitleText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:text="Заголовок"
-                    android:textSize="18sp" />
+                    android:gravity="center_horizontal" />
 
                 <TextView
                     android:id="@+id/details_title_en"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
-                    android:text="Title"
-                    android:textColor="#8c8d94"
-                    android:textSize="16sp" />
+                    android:textColor="#8c8d94" />
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
@@ -62,23 +58,16 @@
                         android:scaleType="centerCrop"
                         android:tint="#6F000000" />
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/details_poster"
+                        android:layout_width="131dp"
+                        android:layout_height="182dp"
                         android:layout_margin="25dp"
                         android:layout_marginLeft="@dimen/card_margin_horizontal"
                         android:layout_marginRight="@dimen/card_margin_horizontal"
                         android:layout_marginBottom="20dp"
-
-                        app:cardCornerRadius="7dp"
-                        app:cardElevation="0dp">
-
-                        <ImageView
-                            android:id="@+id/details_poster"
-                            android:layout_width="131dp"
-                            android:layout_height="182dp"
-                            android:scaleType="centerCrop" />
-                    </androidx.cardview.widget.CardView>
+                        android:scaleType="centerCrop"
+                        app:riv_corner_radius="5dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -97,14 +86,12 @@
                                 style="@style/TitleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Год"
                                 android:textColor="#fff" />
 
                             <TextView
                                 android:id="@+id/details_year"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="2018"
                                 android:textColor="#fff" />
                         </LinearLayout>
 
@@ -118,14 +105,12 @@
                                 style="@style/TitleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Страна"
                                 android:textColor="#fff" />
 
                             <TextView
                                 android:id="@+id/details_country"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Япония"
                                 android:textColor="#fff" />
                         </LinearLayout>
 
@@ -139,7 +124,6 @@
                                 style="@style/TitleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Рейтинг"
                                 android:textColor="#fff" />
 
                             <LinearLayout
@@ -154,12 +138,11 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:layout_marginEnd="3dp"
-                                    android:layout_marginRight="3dp"
+                                    android:isIndicator="true"
                                     android:numStars="5"
                                     android:progressBackgroundTint="#8c8d94"
                                     android:progressTint="#fff"
                                     android:rating="1"
-                                    android:isIndicator="true"
                                     android:secondaryProgressTint="#fff"
                                     android:stepSize="0.1" />
 
@@ -167,7 +150,6 @@
                                     android:id="@+id/details_rating"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="100%"
                                     android:textColor="#fff" />
                             </LinearLayout>
                         </LinearLayout>
@@ -182,14 +164,12 @@
                                 style="@style/TitleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Жанр"
                                 android:textColor="#fff" />
 
                             <TextView
                                 android:id="@+id/details_genre"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="daasd"
                                 android:textColor="#fff" />
                         </LinearLayout>
                     </LinearLayout>
@@ -214,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="5dp"
-                android:text="Описание"
+                android:text="@string/description"
                 android:textColor="#444655"
                 android:textSize="18sp" />
 

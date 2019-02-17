@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.budiyev.android.imageloader.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -53,10 +53,7 @@ public class MediaSearchListAdapter extends RecyclerView.Adapter<MediaSearchList
 
         holder.film_rating_bar.setRating(ratingBar);
 
-        ImageLoader
-                .with(context)
-                .from(current.getPoster())
-                .load(holder.film_poster);
+        Picasso.get().load(current.getPoster()).into(holder.film_poster);
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);

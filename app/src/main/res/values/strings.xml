@@ -1,4 +1,7 @@
 <resources>
     <string name="anidub">Anidub Mobile</string>
     <string name="poster">Постер</string>
+    <string name="item_episode_icon">Эпизод</string>
+    <string name="search">Поиск</string>
+    <string name="description">Описание</string>
 </resources>

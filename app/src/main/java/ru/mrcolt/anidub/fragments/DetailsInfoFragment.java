@@ -1,6 +1,7 @@
 package ru.mrcolt.anidub.fragments;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.budiyev.android.imageloader.ImageLoader;
-import com.budiyev.android.imageloader.LoadCallback;
 import com.ctetin.expandabletextviewlibrary.ExpandableTextView;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+import com.squareup.picasso.Transformation;
 
 import androidx.fragment.app.Fragment;
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
@@ -72,16 +75,20 @@ public class DetailsInfoFragment extends Fragment {
         film_country = view.findViewById(R.id.details_country);
         film_description = view.findViewById(R.id.details_description);
 
-        ImageLoader.with(getContext()).from(Poster).onLoaded(new LoadCallback() {
+        Picasso.get().load(Poster).transform(new Transformation() {
             @Override
-            public void onLoaded(Bitmap image) {
-                getActivity().runOnUiThread(() -> {
-                    BlurUtils blurUtils = new BlurUtils();
-                    film_poster_bg.setImageBitmap(blurUtils.create(getContext(), image, 4f));
-                    film_poster.setImageBitmap(image);
-                });
+            public Bitmap transform(Bitmap source) {
+                Bitmap result = new BlurUtils().create(getContext(), source, 4f);
+                if (result != source) source.recycle();
+                return result;
             }
-        }).load();
+
+            @Override
+            public String key() {
+                return "blurryAndPoster()";
+            }
+        }).into(film_poster_bg);
+        Picasso.get().load(Poster).into(film_poster);
 
         film_title_ru.setText(TitleRU);
         film_title_en.setText(TitleEN);

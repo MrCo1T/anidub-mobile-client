@@ -17,7 +17,6 @@ public class DetailsActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private TextView titleToolbar;
     private Toolbar toolbar;
     private DetailsViewPagerAdapter detailsViewPagerAdapter;
 
@@ -26,20 +25,15 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        try {
-            initComponents();
-            configComponents();
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        initComponents();
+        configComponents();
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    private void initComponents() throws Exception {
+    private void initComponents() {
         viewPager = findViewById(R.id.details_view_pager);
         tabLayout = findViewById(R.id.tab_layout);
         toolbar = findViewById(R.id.details_toolbar);

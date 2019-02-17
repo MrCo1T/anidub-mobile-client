@@ -1,6 +1,7 @@
 package ru.mrcolt.anidub.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,27 +42,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        try {
-            initComponents();
-            configComponents();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        initComponents();
+        configComponents();
+
         loadMediaList(1);
     }
 
-    private void initComponents() throws Exception {
+    private void initComponents() {
         recyclerView = findViewById(R.id.media_list_id);
         progressBar = findViewById(R.id.media_loading);
         mediaListAdapter = new MediaListAdapter(this, mediaListModels);
         linearLayoutManager = new LinearLayoutManager(this);
     }
 
-    private void configComponents() throws Exception {
+    private void configComponents() {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(mediaListAdapter);
-//        recyclerView.setNestedScrollingEnabled(true);
         recyclerView.addOnScrollListener(new EndlessScrollListener(linearLayoutManager) {
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 loadMediaList(page);
@@ -74,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setSubmitButtonEnabled(true);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -92,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 return true;
             }
-
-
         });
         searchView.setOnCloseListener(() -> true);
         return true;

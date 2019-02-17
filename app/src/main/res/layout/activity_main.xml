@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -10,16 +11,15 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme">
 
         <TextView
             style="@style/TitleText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/anidub"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -32,20 +32,18 @@
         android:id="@+id/media_list_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="14dp"
-        android:clipToPadding="false"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="4dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <ProgressBar
+        android:id="@+id/media_loading"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        android:indeterminateTint="@color/accent"
+        tools:targetApi="lollipop" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-            <ProgressBar
-                android:id="@+id/media_loading"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:indeterminateTint="@color/accent"/>
-        </LinearLayout>
 </LinearLayout>
