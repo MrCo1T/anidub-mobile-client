@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 apply plugin: 'com.android.application'
 
 android {
@@ -58,64 +57,3 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'
 }
-=======
-apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "ru.mrcolt.anidubmobile"
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            debuggable false
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    buildToolsVersion '28.0.3'
-}
-
-allprojects {
-    repositories {
-        maven { url 'https://jitpack.io' }
-        google()
-        jcenter()
-    }
-}
-
-android {
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    defaultConfig {
-        renderscriptTargetApi 28
-        renderscriptSupportModeEnabled true
-    }
-}
-
-dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.squareup.okhttp3:okhttp:3.13.1'                    // http client
-    implementation 'com.budiyev.android:image-loader:2.5.6'                // image loader
-    implementation 'com.github.MZCretin:ExpandableTextView:1.5.2'          // expandable text view
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.5'     // player core
-    implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.5'      // player HLS
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.5'       // player ui
-    implementation 'com.github.mohammadatif:Animatoo:master'               // animations
-    implementation 'me.zhanghai.android.materialratingbar:library:1.3.2'   // rating bar
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'              // recycler view
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-}
->>>>>>> Stashed changes

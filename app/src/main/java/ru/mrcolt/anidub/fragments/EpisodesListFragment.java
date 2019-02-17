@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -14,10 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -39,6 +35,7 @@ public class EpisodesListFragment extends Fragment {
     private EpisodesListModel episode;
     private DialogUtils dialogUtils = new DialogUtils();
     private ProgressDialog progressDialog;
+    private NetworkUtils okNetworkUtils = new NetworkUtils();
 
     public EpisodesListFragment() {
     }
@@ -68,76 +65,23 @@ public class EpisodesListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_episodes_list, container, false);
         listView = view.findViewById(R.id.episodes_listview);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                episode = episodesListModel.get(i);
-                loadEpisode(episode.getURL());
-                progressDialog = dialogUtils.createLoading(getContext(), "Загрузка эпизода");
-            }
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            episode = episodesListModel.get(i);
+            loadEpisode(episode.getURL());
+            progressDialog = dialogUtils.createLoading(getContext(), "Загрузка эпизода");
         });
 
         loadMediaEpisodesList(getExtras("NewsID"));
         return view;
     }
 
-    private String createTempFile(String content) throws IOException {
-        File outputDir = getContext().getCacheDir();
-        File outputFile = File.createTempFile("anidubmobile", ".tmp", outputDir);
-        String tempFilePath = outputFile.getAbsolutePath();
-
-        FileOutputStream fOut = new FileOutputStream(tempFilePath);
-        OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
-        myOutWriter.append(content);
-
-        myOutWriter.close();
-
-        fOut.flush();
-        fOut.close();
-        return tempFilePath;
-    }
-
-    private String prepareChunk(String chunk, String chunkURL) {
-        String cdnURL = chunkURL.split("chunk.m3u8")[0];
-        return chunk.replaceAll("n_", cdnURL + "n_");
-    }
-
-    private void prepareEpisode(String body) throws JSONException {
-        String chunkURL = body.split("\n")[2].replaceAll("https://(.*?).anivid", "https://cdn100.anivid");
-        NetworkUtils okNetworkUtils = new NetworkUtils();
-        okNetworkUtils.getAnidubRequest(chunkURL, new NetworkUtils.OKHttpNetwork() {
-            @Override
-            public void onSuccess(String body) {
-                String preparedChunk = prepareChunk(body, chunkURL);
-                try {
-                    String chunkFilePath = createTempFile(preparedChunk);
-                    dialogUtils.destroyLoading(progressDialog);
-                    playVideo(episode.getTitle(), chunkFilePath);
-                } catch (IOException e) {
-                    Objects.requireNonNull(getActivity()).runOnUiThread(() -> Toast.makeText(getContext(), "Не могу создать данные для эпизода", Toast.LENGTH_LONG).show());
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(IOException e) {
-                Objects.requireNonNull(getActivity()).runOnUiThread(() -> Toast.makeText(getContext(), "Сервер не доступен", Toast.LENGTH_LONG).show());
-                e.printStackTrace();
-            }
-        });
-    }
-
     private void loadEpisode(String url) {
-        NetworkUtils okNetworkUtils = new NetworkUtils();
         okNetworkUtils.getAnidubRequest(url, new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
-                try {
-                    prepareEpisode(body);
-                } catch (JSONException e) {
-                    Objects.requireNonNull(getActivity()).runOnUiThread(() -> Toast.makeText(getContext(), "Не могу обработать эпизод", Toast.LENGTH_LONG).show());
-                    e.printStackTrace();
-                }
+                String chunkURL = body.split("\n")[2].replaceAll("https://(.*?).anivid", "https://cdn100.anivid");
+                dialogUtils.destroyLoading(progressDialog);
+                playVideo(episode.getTitle(), chunkURL);
             }
 
             @Override
@@ -162,7 +106,6 @@ public class EpisodesListFragment extends Fragment {
     }
 
     private void loadMediaEpisodesList(String newsID) {
-        NetworkUtils okNetworkUtils = new NetworkUtils();
         okNetworkUtils.getAPIRequest("http://anidub-de.mrcolt.ru/media/episodes?news_id=" + newsID, new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {

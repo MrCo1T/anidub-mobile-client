@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MediaListAdapter mediaListAdapter;
     private LinearLayoutManager linearLayoutManager;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initComponents() throws Exception {
         recyclerView = findViewById(R.id.media_list_id);
+        progressBar = findViewById(R.id.media_loading);
         mediaListAdapter = new MediaListAdapter(this, mediaListModels);
         linearLayoutManager = new LinearLayoutManager(this);
     }
@@ -134,5 +138,6 @@ public class MainActivity extends AppCompatActivity {
                     jsonData.getString("news_id")));
         }
         runOnUiThread(() -> mediaListAdapter.notifyItemInserted(mediaListModels.size()));
+        progressBar.setVisibility(View.INVISIBLE);
     }
 }
