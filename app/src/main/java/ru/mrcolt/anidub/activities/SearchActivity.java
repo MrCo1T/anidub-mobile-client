@@ -13,8 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -123,7 +123,10 @@ public class SearchActivity extends AppCompatActivity {
 
     private void loadMediaSearchList(String query, int page) {
         NetworkUtils okNetworkUtils = new NetworkUtils();
-        okNetworkUtils.getAPIRequest("http://anidub-de.mrcolt.ru/media/search?q=" + query + "&page=" + String.valueOf(page), new NetworkUtils.OKHttpNetwork() {
+        okNetworkUtils.sendGETRequest(this,
+                "http://anidub-de.mrcolt.ru/media/search?q=" + query + "&page=" + String.valueOf(page),
+                new HashMap<>(),
+                new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 try {
@@ -135,7 +138,7 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(IOException e) {
+            public void onFailure(String e) {
                 runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: сервер не доступен", Toast.LENGTH_LONG).show());
             }
         });

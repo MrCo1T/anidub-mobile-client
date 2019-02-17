@@ -1,61 +1,39 @@
 package ru.mrcolt.anidub.utils;
 
-import java.io.IOException;
+import android.content.Context;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class NetworkUtils {
 
-    private OkHttpClient client = new OkHttpClient();
+    private RequestQueue queue;
 
     public interface OKHttpNetwork {
         void onSuccess(String body);
-
-        void onFailure(IOException e);
+        void onFailure(String e);
     }
 
-    public void getAPIRequest(String url, final OKHttpNetwork okHttpCallBack) {
-        Request request = new Request.Builder()
-                .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0")
-                .url(url)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
+    public void sendGETRequest(Context context, String url, Map<String, String> headers,
+                               final OKHttpNetwork okHttpCallBack) {
+        queue = Volley.newRequestQueue(context);
+        StringRequest getRequest = new StringRequest(Request.Method.GET, url,
+                response -> okHttpCallBack.onSuccess(response),
+                error -> okHttpCallBack.onFailure(error.toString())
+        ) {
             @Override
-            public void onFailure(Call call, IOException e) {
-                okHttpCallBack.onFailure(e);
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<>();
+                params.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0");
+                params.putAll(headers);
+                return params;
             }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    okHttpCallBack.onSuccess(response.body().string());
-                }
-            }
-        });
-    }
-
-    public void getAnidubRequest(String url, final OKHttpNetwork okHttpCallBack) {
-        Request request = new Request.Builder()
-                .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0")
-                .addHeader("Referer", "https://anime.anidub.com/")
-                .url(url)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                okHttpCallBack.onFailure(e);
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    okHttpCallBack.onSuccess(response.body().string());
-                }
-            }
-        });
+        };
+        queue.add(getRequest);
     }
 }

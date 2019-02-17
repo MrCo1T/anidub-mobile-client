@@ -4,19 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import java.io.IOException;
+import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
 import ru.mrcolt.anidub.utils.NetworkUtils;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
+    private NetworkUtils networkUtils = new NetworkUtils();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        NetworkUtils networkUtils = new NetworkUtils();
-        networkUtils.getAnidubRequest("http://anidub-de.mrcolt.ru", new NetworkUtils.OKHttpNetwork() {
+        networkUtils.sendGETRequest(this,
+                "http://anidub-de.mrcolt.ru",
+                new HashMap<>(),
+                new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 runOnUiThread(() -> {
@@ -26,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(IOException e) {
+            public void onFailure(String e) {
                 runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: проверьте подключение к интернету", Toast.LENGTH_LONG).show());
             }
         });

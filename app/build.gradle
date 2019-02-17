@@ -36,7 +36,7 @@ android {
     }
 
     defaultConfig {
-        renderscriptTargetApi 28
+        renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
     }
 }
@@ -44,7 +44,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    implementation 'com.squareup.okhttp3:okhttp:3.13.1'                    // http client
+    implementation 'com.android.volley:volley:1.1.1'                       // http client
     implementation 'com.squareup.picasso:picasso:2.71828'                  // image loader
     implementation 'com.makeramen:roundedimageview:2.3.0'                  // RoundedImageView
     implementation 'com.github.MZCretin:ExpandableTextView:1.5.2'          // ExpandableTextView

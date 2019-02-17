@@ -1,7 +1,6 @@
 package ru.mrcolt.anidub.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,8 +12,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private MediaListAdapter mediaListAdapter;
     private LinearLayoutManager linearLayoutManager;
     private ProgressBar progressBar;
+    private NetworkUtils okNetworkUtils = new NetworkUtils();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +95,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadMediaList(int page) {
-        NetworkUtils okNetworkUtils = new NetworkUtils();
-        okNetworkUtils.getAPIRequest("http://anidub-de.mrcolt.ru/media?page=" + String.valueOf(page), new NetworkUtils.OKHttpNetwork() {
+        okNetworkUtils.sendGETRequest(this,
+                "http://anidub-de.mrcolt.ru/media?page=" + String.valueOf(page),
+                new HashMap<>(),
+                new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 try {
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(IOException e) {
+            public void onFailure(String e) {
                 runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: сервер не доступен", Toast.LENGTH_LONG).show());
             }
         });

@@ -13,8 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
@@ -76,7 +77,12 @@ public class EpisodesListFragment extends Fragment {
     }
 
     private void loadEpisode(String url) {
-        okNetworkUtils.getAnidubRequest(url, new NetworkUtils.OKHttpNetwork() {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Referer", "https://anime.anidub.com/");
+        okNetworkUtils.sendGETRequest(getContext(),
+                url,
+                headers,
+                new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 String chunkURL = body.split("\n")[2].replaceAll("https://(.*?).anivid", "https://cdn100.anivid");
@@ -85,9 +91,8 @@ public class EpisodesListFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(IOException e) {
+            public void onFailure(String e) {
                 Objects.requireNonNull(getActivity()).runOnUiThread(() -> Toast.makeText(getContext(), "Сервер не доступен", Toast.LENGTH_LONG).show());
-                e.printStackTrace();
             }
         });
     }
@@ -100,13 +105,16 @@ public class EpisodesListFragment extends Fragment {
             episodesListModel.add(new EpisodesListModel(
                     resultTitle.get(i).toString(),
                     resultUrl.get(i).toString(),
-                    "AniDub"));
+                    "Anidub"));
         }
         Objects.requireNonNull(getActivity()).runOnUiThread(() -> listView.setAdapter(new EpisodesListAdapter(getContext(), episodesListModel)));
     }
 
     private void loadMediaEpisodesList(String newsID) {
-        okNetworkUtils.getAPIRequest("http://anidub-de.mrcolt.ru/media/episodes?news_id=" + newsID, new NetworkUtils.OKHttpNetwork() {
+        okNetworkUtils.sendGETRequest(getContext(),
+                "http://anidub-de.mrcolt.ru/media/episodes?news_id=" + newsID,
+                new HashMap<>(),
+                new NetworkUtils.OKHttpNetwork() {
             @Override
             public void onSuccess(String body) {
                 try {
@@ -117,8 +125,8 @@ public class EpisodesListFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(IOException e) {
-                e.printStackTrace();
+            public void onFailure(String e) {
+
             }
         });
     }

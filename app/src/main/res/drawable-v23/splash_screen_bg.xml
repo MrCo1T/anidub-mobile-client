@@ -6,6 +6,8 @@
         android:drawable="@color/white" />
 
     <item android:drawable="@drawable/ic_naruto_filled"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:width="1.2in"
+        android:height="1.2in" />
 
 </layer-list>
