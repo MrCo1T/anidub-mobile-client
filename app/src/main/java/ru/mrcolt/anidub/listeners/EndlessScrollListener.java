@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 public abstract class EndlessScrollListener extends RecyclerView.OnScrollListener {
     // The minimum amount of items to have below your current scroll position
     // before loading more.
-    private int visibleThreshold = 5;
+    private int visibleThreshold = 3;
     // The current offset index of data you have loaded
     private int currentPage = 1;
     // The total number of items in the dataset after the last load
-    private int previousTotalItemCount = 0;
+    private int previousTotalItemCount = 0; //0
     // True if we are still waiting for the last set of data to load.
-    private boolean loading = true;
+    private boolean loading = false; //true
     // Sets the starting page index
     private int startingPageIndex = 0;
 
@@ -40,8 +40,7 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
         for (int i = 0; i < lastVisibleItemPositions.length; i++) {
             if (i == 0) {
                 maxSize = lastVisibleItemPositions[i];
-            }
-            else if (lastVisibleItemPositions[i] > maxSize) {
+            } else if (lastVisibleItemPositions[i] > maxSize) {
                 maxSize = lastVisibleItemPositions[i];
             }
         }

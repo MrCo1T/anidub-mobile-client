@@ -14,13 +14,8 @@ public class NetworkUtils {
 
     private RequestQueue queue;
 
-    public interface OKHttpNetwork {
-        void onSuccess(String body);
-        void onFailure(String e);
-    }
-
     public void sendGETRequest(Context context, String url, Map<String, String> headers,
-                               final OKHttpNetwork okHttpCallBack) {
+                               final httpNetwork okHttpCallBack) {
         queue = Volley.newRequestQueue(context);
         StringRequest getRequest = new StringRequest(Request.Method.GET, url,
                 response -> okHttpCallBack.onSuccess(response),
@@ -35,5 +30,11 @@ public class NetworkUtils {
             }
         };
         queue.add(getRequest);
+    }
+
+    public interface httpNetwork {
+        void onSuccess(String body);
+
+        void onFailure(String e);
     }
 }

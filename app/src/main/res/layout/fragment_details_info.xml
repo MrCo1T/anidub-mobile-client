@@ -6,221 +6,178 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/details_title_ru"
+            style="@style/TitleText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_horizontal"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/details_title_en"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/grey" />
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/details_poster_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:tint="#6F000000" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/details_poster"
+                android:layout_width="131dp"
+                android:layout_height="182dp"
+                android:layout_margin="25dp"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="7dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="170dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/details_title_ru"
                     style="@style/TitleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/year"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/details_title_en"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:textColor="#8c8d94" />
+                    android:id="@+id/details_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    style="@style/TitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/country"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/details_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    style="@style/TitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/rating"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                        android:id="@+id/details_rating_bar"
+                        style="@style/RatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginEnd="3dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:progressBackgroundTint="#8c8d94"
+                        android:progressTint="@color/white"
+                        android:rating="1"
+                        android:secondaryProgressTint="@color/white"
+                        android:stepSize="0.1" />
+
+                    <TextView
+                        android:id="@+id/details_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/TitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/genre"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/details_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/card_margin_horizontal"
-                android:layout_marginRight="@dimen/card_margin_horizontal"
-                android:layout_marginBottom="20dp"
-                app:cardCornerRadius="0dp"
-                app:cardElevation="0dp">
+        </FrameLayout>
 
-                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+        <TextView
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/description"
+            android:textColor="#444655"
+            android:textSize="22sp" />
 
-                    <ImageView
-                        android:id="@+id/details_poster_bg"
-                        android:layout_width="match_parent"
-                        android:layout_height="232dp"
-                        android:scaleType="centerCrop"
-                        android:tint="#6F000000" />
+        <com.ctetin.expandabletextviewlibrary.ExpandableTextView
+            android:id="@+id/details_description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="#444655"
+            app:ep_contract_color="@color/accent"
+            app:ep_contract_text="меньше"
+            app:ep_end_color="@color/accent"
+            app:ep_expand_color="@color/accent"
+            app:ep_expand_text="больше"
+            app:ep_link_color="@color/accent"
+            app:ep_link_res="@color/accent"
+            app:ep_max_line="8"
+            app:ep_mention_color="@color/accent"
+            app:ep_need_animation="true"
+            app:ep_need_contract="true"
+            app:ep_need_expand="true"
+            app:ep_need_link="true"
+            app:ep_need_mention="true"
+            app:ep_need_self="true"
+            app:ep_self_color="@color/accent" />
 
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/details_poster"
-                        android:layout_width="131dp"
-                        android:layout_height="182dp"
-                        android:layout_margin="25dp"
-                        android:layout_marginLeft="@dimen/card_margin_horizontal"
-                        android:layout_marginRight="@dimen/card_margin_horizontal"
-                        android:layout_marginBottom="20dp"
-                        android:scaleType="centerCrop"
-                        app:riv_corner_radius="5dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="182dp"
-                        android:layout_marginLeft="170dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginRight="25dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/TitleText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#fff" />
-
-                            <TextView
-                                android:id="@+id/details_year"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#fff" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/TitleText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#fff" />
-
-                            <TextView
-                                android:id="@+id/details_country"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#fff" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/TitleText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#fff" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <me.zhanghai.android.materialratingbar.MaterialRatingBar
-                                    android:id="@+id/details_rating_bar"
-                                    style="@style/RatingBar"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:layout_marginEnd="3dp"
-                                    android:isIndicator="true"
-                                    android:numStars="5"
-                                    android:progressBackgroundTint="#8c8d94"
-                                    android:progressTint="#fff"
-                                    android:rating="1"
-                                    android:secondaryProgressTint="#fff"
-                                    android:stepSize="0.1" />
-
-                                <TextView
-                                    android:id="@+id/details_rating"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="#fff" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/TitleText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#fff" />
-
-                            <TextView
-                                android:id="@+id/details_genre"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#fff" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                </FrameLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:paddingBottom="25dp">
-
-            <TextView
-                style="@style/TitleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="5dp"
-                android:text="@string/description"
-                android:textColor="#444655"
-                android:textSize="18sp" />
-
-            <com.ctetin.expandabletextviewlibrary.ExpandableTextView
-                android:id="@+id/details_description"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:textColor="#444655"
-                app:ep_contract_color="@color/accent"
-                app:ep_contract_text="меньше"
-                app:ep_end_color="@color/accent"
-                app:ep_expand_color="@color/accent"
-                app:ep_expand_text="больше"
-                app:ep_link_color="@color/accent"
-                app:ep_link_res="@color/accent"
-                app:ep_max_line="6"
-                app:ep_mention_color="@color/accent"
-                app:ep_need_animation="true"
-                app:ep_need_contract="true"
-                app:ep_need_expand="true"
-                app:ep_need_link="true"
-                app:ep_need_mention="true"
-                app:ep_need_self="true"
-                app:ep_self_color="@color/accent" />
-
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>

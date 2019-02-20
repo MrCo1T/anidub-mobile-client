@@ -8,7 +8,9 @@
         <item name="android:fontFamily">@font/opensans_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="colorControlActivated">@color/black</item>
     </style>
+
 
     <style name="ToolbarTheme" parent="AppTheme">
         <item name="android:textSize">18sp</item>
@@ -20,21 +22,20 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
-    <style name="WindowAnimationStyle">
-        <item name="android:windowEnterAnimation">@android:anim/slide_out_right</item>
-        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
-    </style>
-
     <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@drawable/splash_screen_bg</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="VideoPlayerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="TitleText">
-        <item name="android:fontFamily">@font/notosans_bold</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">18sp</item>
     </style>
 

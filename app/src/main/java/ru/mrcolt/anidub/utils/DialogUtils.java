@@ -16,4 +16,5 @@ public class DialogUtils {
     public void destroyLoading(ProgressDialog dialog) {
         dialog.dismiss();
     }
+
 }

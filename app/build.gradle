@@ -4,18 +4,26 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "ru.mrcolt.anidubmobile"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        resConfig "ru"
     }
     buildTypes {
         release {
-            debuggable false
+            //Enable the proguard
             minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), "proguard-rules.pro"
+
+            //Other parameters
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+//            signingConfig playStoreConfig //Add your own signing config
+            pseudoLocalesEnabled false
+            zipAlignEnabled true
         }
     }
     buildToolsVersion '28.0.3'
@@ -36,7 +44,7 @@ android {
     }
 
     defaultConfig {
-        renderscriptTargetApi 19
+        renderscriptTargetApi 21
         renderscriptSupportModeEnabled true
     }
 }
@@ -56,5 +64,5 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'              // recycler view
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.github.searchy2:CustomAlertViewDialogue:2.5.1'
 }

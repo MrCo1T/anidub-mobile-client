@@ -1,9 +1,6 @@
 package ru.mrcolt.anidub.activities;
 
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -74,74 +70,70 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            onBackPressed();
-            Animatoo.animateSlideRight(this);
-        }
-        return super.onKeyUp(keyCode, event);
+    public void onBackPressed() {
+        super.onBackPressed();
+        Animatoo.animateSlideRight(this);
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
-        Animatoo.animateSlideRight(this);
         return true;
     }
 
-    private void clearRecyclerView() {
-        mediaSearchListModels.clear();
-        mediaSearchListAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                clearRecyclerView();
-                searchView.setIconified(true);
-                menuItem.collapseActionView();
-                searchTitle.setText(query);
-                loadMediaSearchList(query, 1);
-
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return true;
-            }
-
-        });
-        searchView.setOnCloseListener(() -> true);
-        return true;
-    }
+//    private void clearRecyclerView() {
+//        mediaSearchListModels.clear();
+//        mediaSearchListAdapter.notifyDataSetChanged();
+//    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        MenuItem menuItem = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) menuItem.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                clearRecyclerView();
+//                searchView.setIconified(true);
+//                menuItem.collapseActionView();
+//                searchTitle.setText(query);
+//                loadMediaSearchList(query, 1);
+//
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return true;
+//            }
+//
+//        });
+//        searchView.setOnCloseListener(() -> true);
+//        return true;
+//    }
 
     private void loadMediaSearchList(String query, int page) {
         NetworkUtils okNetworkUtils = new NetworkUtils();
         okNetworkUtils.sendGETRequest(this,
                 "http://anidub-de.mrcolt.ru/media/search?q=" + query + "&page=" + String.valueOf(page),
                 new HashMap<>(),
-                new NetworkUtils.OKHttpNetwork() {
-            @Override
-            public void onSuccess(String body) {
-                try {
-                    prepareMediaSearchList(body);
-                } catch (Exception e) {
-                    runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: Не удается обработать данные", Toast.LENGTH_LONG).show());
-                    e.printStackTrace();
-                }
-            }
+                new NetworkUtils.httpNetwork() {
+                    @Override
+                    public void onSuccess(String body) {
+                        try {
+                            prepareMediaSearchList(body);
+                        } catch (Exception e) {
+                            runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: Не удается обработать данные", Toast.LENGTH_LONG).show());
+                            e.printStackTrace();
+                        }
+                    }
 
-            @Override
-            public void onFailure(String e) {
-                runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: сервер не доступен", Toast.LENGTH_LONG).show());
-            }
-        });
+                    @Override
+                    public void onFailure(String e) {
+                        runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: сервер не доступен", Toast.LENGTH_LONG).show());
+                    }
+                });
     }
 
     private void prepareMediaSearchList(String body) throws JSONException {

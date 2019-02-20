@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,6 +61,7 @@ public class EpisodesListFragment extends Fragment {
         intent.putExtra("title", title);
         intent.putExtra("url", url);
         startActivity(intent);
+        Animatoo.animateZoom(getContext());
     }
 
     @Nullable
@@ -77,24 +80,26 @@ public class EpisodesListFragment extends Fragment {
     }
 
     private void loadEpisode(String url) {
+//        dialogUtils.destroyLoading(progressDialog);
+//        playVideo(episode.getTitle(), url);
         Map<String, String> headers = new HashMap<>();
         headers.put("Referer", "https://anime.anidub.com/");
         okNetworkUtils.sendGETRequest(getContext(),
                 url,
                 headers,
-                new NetworkUtils.OKHttpNetwork() {
-            @Override
-            public void onSuccess(String body) {
-                String chunkURL = body.split("\n")[2].replaceAll("https://(.*?).anivid", "https://cdn100.anivid");
-                dialogUtils.destroyLoading(progressDialog);
-                playVideo(episode.getTitle(), chunkURL);
-            }
+                new NetworkUtils.httpNetwork() {
+                    @Override
+                    public void onSuccess(String body) {
+                        String chunkURL = body.split("\n")[2];
+                        dialogUtils.destroyLoading(progressDialog);
+                        playVideo(episode.getTitle(), chunkURL);
+                    }
 
-            @Override
-            public void onFailure(String e) {
-                Objects.requireNonNull(getActivity()).runOnUiThread(() -> Toast.makeText(getContext(), "Сервер не доступен", Toast.LENGTH_LONG).show());
-            }
-        });
+                    @Override
+                    public void onFailure(String e) {
+                        Objects.requireNonNull(getActivity()).runOnUiThread(() -> Toast.makeText(getContext(), "Сервер не доступен", Toast.LENGTH_LONG).show());
+                    }
+                });
     }
 
     private void prepareMediaEpisodesList(String body) throws JSONException {
@@ -114,21 +119,21 @@ public class EpisodesListFragment extends Fragment {
         okNetworkUtils.sendGETRequest(getContext(),
                 "http://anidub-de.mrcolt.ru/media/episodes?news_id=" + newsID,
                 new HashMap<>(),
-                new NetworkUtils.OKHttpNetwork() {
-            @Override
-            public void onSuccess(String body) {
-                try {
-                    prepareMediaEpisodesList(body);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
+                new NetworkUtils.httpNetwork() {
+                    @Override
+                    public void onSuccess(String body) {
+                        try {
+                            prepareMediaEpisodesList(body);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-            @Override
-            public void onFailure(String e) {
+                    @Override
+                    public void onFailure(String e) {
 
-            }
-        });
+                    }
+                });
     }
 
 }

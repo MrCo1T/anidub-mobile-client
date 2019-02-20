@@ -49,7 +49,7 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
         holder.film_rating.setText(currentRating);
         holder.film_genre.setText(currentGenre);
 
-        float ratingBar = ((currentRating.contains("%")) ? Float.parseFloat(currentRating.replace("%", ""))/20 : Float.parseFloat(currentRating));
+        float ratingBar = ((currentRating.contains("%")) ? Float.parseFloat(currentRating.replace("%", "")) / 20 : Float.parseFloat(currentRating));
 
         holder.film_rating_bar.setRating(ratingBar);
 

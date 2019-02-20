@@ -1,8 +1,6 @@
 package ru.mrcolt.anidub.activities;
 
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.tabs.TabLayout;
@@ -46,18 +44,14 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            onBackPressed();
-            Animatoo.animateSlideRight(this);
-        }
-        return super.onKeyUp(keyCode, event);
+    public void onBackPressed() {
+        super.onBackPressed();
+        Animatoo.animateSlideRight(this);
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
-        Animatoo.animateSlideRight(this);
         return true;
     }
 }

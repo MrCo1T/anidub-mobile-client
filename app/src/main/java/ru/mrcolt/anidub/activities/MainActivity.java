@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
         initComponents();
         configComponents();
@@ -98,22 +99,22 @@ public class MainActivity extends AppCompatActivity {
         okNetworkUtils.sendGETRequest(this,
                 "http://anidub-de.mrcolt.ru/media?page=" + String.valueOf(page),
                 new HashMap<>(),
-                new NetworkUtils.OKHttpNetwork() {
-            @Override
-            public void onSuccess(String body) {
-                try {
-                    prepareMediaList(body);
-                } catch (Exception e) {
-                    runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: Не удается обработать данные", Toast.LENGTH_LONG).show());
-                    e.printStackTrace();
-                }
-            }
+                new NetworkUtils.httpNetwork() {
+                    @Override
+                    public void onSuccess(String body) {
+                        try {
+                            prepareMediaList(body);
+                        } catch (Exception e) {
+                            runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: Не удается обработать данные", Toast.LENGTH_LONG).show());
+                            e.printStackTrace();
+                        }
+                    }
 
-            @Override
-            public void onFailure(String e) {
-                runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: сервер не доступен", Toast.LENGTH_LONG).show());
-            }
-        });
+                    @Override
+                    public void onFailure(String e) {
+                        runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: сервер не доступен", Toast.LENGTH_LONG).show());
+                    }
+                });
     }
 
     private void prepareMediaList(String body) throws JSONException {
