@@ -56,7 +56,9 @@ public class SplashScreenActivity extends AppCompatActivity {
                                         .setNegativeText("Позже")
                                         .setOnPositiveClicked((view, dialog) -> {
                                             dialog.dismiss();
-                                            PermissionUtils.get(SplashScreenActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
+                                            while (!PermissionUtils.check(SplashScreenActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                                                PermissionUtils.get(SplashScreenActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
+                                            }
                                             new DownloadFile().execute(download);
                                         })
                                         .setOnNegativeClicked((view, dialog) -> {
