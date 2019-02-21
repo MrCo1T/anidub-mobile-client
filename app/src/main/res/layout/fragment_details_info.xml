@@ -6,7 +6,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -34,20 +34,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/details_poster_bg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:tint="#6F000000" />
 
-            <com.makeramen.roundedimageview.RoundedImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/details_poster"
                 android:layout_width="131dp"
                 android:layout_height="182dp"
                 android:layout_margin="25dp"
                 android:scaleType="centerCrop"
-                app:riv_corner_radius="7dp" />
+                app:roundedCornerRadius="7dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

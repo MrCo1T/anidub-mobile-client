@@ -2,14 +2,14 @@ package ru.mrcolt.anidub.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.squareup.picasso.Picasso;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -52,8 +52,7 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
         float ratingBar = ((currentRating.contains("%")) ? Float.parseFloat(currentRating.replace("%", "")) / 20 : Float.parseFloat(currentRating));
 
         holder.film_rating_bar.setRating(ratingBar);
-
-        Picasso.get().load(current.getPoster()).into(holder.film_poster);
+        holder.film_poster.setImageURI(Uri.parse(current.getPoster()));
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);
@@ -82,7 +81,7 @@ public class MediaListAdapter extends RecyclerView.Adapter<MediaListAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView film_poster;
+        SimpleDraweeView film_poster;
         TextView film_title, film_rating, film_genre;
         MaterialRatingBar film_rating_bar;
 

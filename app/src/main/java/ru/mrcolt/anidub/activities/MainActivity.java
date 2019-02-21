@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
+        Fresco.initialize(this);
         recyclerView = findViewById(R.id.media_list_id);
         progressBar = findViewById(R.id.media_loading);
         mediaListAdapter = new MediaListAdapter(this, mediaListModels);

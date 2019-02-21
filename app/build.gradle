@@ -6,7 +6,7 @@ android {
         applicationId "ru.mrcolt.anidubmobile"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
+        versionCode 2
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resConfig "ru"
@@ -53,7 +53,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.volley:volley:1.1.1'                       // http client
-    implementation 'com.squareup.picasso:picasso:2.71828'                  // image loader
+    implementation 'com.facebook.fresco:fresco:1.12.1'                     // image loader
     implementation 'com.makeramen:roundedimageview:2.3.0'                  // RoundedImageView
     implementation 'com.github.MZCretin:ExpandableTextView:1.5.2'          // ExpandableTextView
     implementation 'com.google.android.exoplayer:exoplayer-core:2.9.5'     // player core

@@ -2,6 +2,7 @@ package ru.mrcolt.anidub.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,7 +52,7 @@ public class MediaSearchListAdapter extends RecyclerView.Adapter<MediaSearchList
 
         holder.film_rating_bar.setRating(ratingBar);
 
-        Picasso.get().load(current.getPoster()).into(holder.film_poster);
+        holder.film_poster.setImageURI(Uri.parse(current.getPoster()));
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);

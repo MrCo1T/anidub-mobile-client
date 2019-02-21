@@ -1,10 +1,13 @@
 package ru.mrcolt.anidub.activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +36,7 @@ public class SearchActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView searchTitle;
     private String searchQuery;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +54,11 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
+        Fresco.initialize(this);
         toolbar = findViewById(R.id.search_toolbar);
         searchTitle = findViewById(R.id.search_title);
         recyclerView = findViewById(R.id.media_search_list_id);
+        progressBar = findViewById(R.id.media_search_loading);
         mediaSearchListAdapter = new MediaSearchListAdapter(this, mediaSearchListModels);
         linearLayoutManager = new LinearLayoutManager(this);
     }
@@ -155,5 +161,6 @@ public class SearchActivity extends AppCompatActivity {
                     jsonData.getString("news_id")));
         }
         runOnUiThread(() -> mediaSearchListAdapter.notifyItemInserted(mediaSearchListModels.size()));
+        progressBar.setVisibility(View.INVISIBLE);
     }
 }
