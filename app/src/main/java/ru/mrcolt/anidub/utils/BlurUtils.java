@@ -13,7 +13,7 @@ public class BlurUtils {
     private static final float BITMAP_SCALE = 0.4f;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public Bitmap create(Context context, Bitmap image, float radius) {
+    public static Bitmap create(Context context, Bitmap image, float radius) {
         int width = Math.round(image.getWidth() * BITMAP_SCALE);
         int height = Math.round(image.getHeight() * BITMAP_SCALE);
 

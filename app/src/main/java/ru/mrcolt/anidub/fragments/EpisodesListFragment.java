@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
@@ -18,7 +17,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,7 +34,6 @@ public class EpisodesListFragment extends Fragment {
     private ArrayList<EpisodesListModel> episodesListModel = new ArrayList<>();
     private ListView listView;
     private EpisodesListModel episode;
-    private DialogUtils dialogUtils = new DialogUtils();
     private ProgressDialog progressDialog;
     private NetworkUtils okNetworkUtils = new NetworkUtils();
 
@@ -72,7 +69,7 @@ public class EpisodesListFragment extends Fragment {
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
             episode = episodesListModel.get(i);
             loadEpisode(episode.getURL());
-            progressDialog = dialogUtils.createLoading(getContext(), "Загрузка эпизода");
+            progressDialog = DialogUtils.createLoading(getContext(), "Загрузка...");
         });
 
         loadMediaEpisodesList(getExtras("NewsID"));
@@ -80,8 +77,6 @@ public class EpisodesListFragment extends Fragment {
     }
 
     private void loadEpisode(String url) {
-//        dialogUtils.destroyLoading(progressDialog);
-//        playVideo(episode.getTitle(), url);
         Map<String, String> headers = new HashMap<>();
         headers.put("Referer", "https://anime.anidub.com/");
         okNetworkUtils.sendGETRequest(getContext(),
@@ -91,28 +86,35 @@ public class EpisodesListFragment extends Fragment {
                     @Override
                     public void onSuccess(String body) {
                         String chunkURL = body.split("\n")[2];
-                        dialogUtils.destroyLoading(progressDialog);
+                        DialogUtils.destroyLoading(progressDialog);
                         playVideo(episode.getTitle(), chunkURL);
                     }
 
                     @Override
                     public void onFailure(String e) {
-                        Objects.requireNonNull(getActivity()).runOnUiThread(() -> Toast.makeText(getContext(), "Сервер не доступен", Toast.LENGTH_LONG).show());
+                        DialogUtils.defaultAlert(getActivity(), "Ошибка", "Сервер не доступен", "ОК");
                     }
                 });
     }
 
     private void prepareMediaEpisodesList(String body) throws JSONException {
         JSONObject result = new JSONObject(body);
-        JSONArray resultTitle = result.getJSONObject("data").getJSONObject("episodes").getJSONArray("title");
-        JSONArray resultUrl = result.getJSONObject("data").getJSONObject("episodes").getJSONObject("url").getJSONArray("Anidub");
-        for (int i = 0; i < resultTitle.length(); i++) {
-            episodesListModel.add(new EpisodesListModel(
-                    resultTitle.get(i).toString(),
-                    resultUrl.get(i).toString(),
-                    "Anidub"));
+        String resultError = result.getString("status");
+        if (resultError.equals("success")) {
+            JSONArray resultTitle = result.getJSONObject("data").getJSONObject("episodes").getJSONArray("title");
+            JSONArray resultUrl = result.getJSONObject("data").getJSONObject("episodes").getJSONObject("url").getJSONArray("Anidub");
+            for (int i = 0; i < resultTitle.length(); i++) {
+                episodesListModel.add(new EpisodesListModel(
+                        resultTitle.get(i).toString(),
+                        resultUrl.get(i).toString(),
+                        "Anidub"));
+            }
+            listView.setAdapter(new EpisodesListAdapter(getContext(), episodesListModel));
+        } else {
+            String resultErrorMessage = result.getJSONObject("error").getString("error_message");
+            DialogUtils.defaultAlert(getActivity(), "Ошибка", resultErrorMessage, "ОК");
         }
-        Objects.requireNonNull(getActivity()).runOnUiThread(() -> listView.setAdapter(new EpisodesListAdapter(getContext(), episodesListModel)));
+
     }
 
     private void loadMediaEpisodesList(String newsID) {
@@ -131,7 +133,7 @@ public class EpisodesListFragment extends Fragment {
 
                     @Override
                     public void onFailure(String e) {
-
+                        DialogUtils.defaultAlert(getActivity(), "Ошибка", "Сервер не доступен", "ОК");
                     }
                 });
     }

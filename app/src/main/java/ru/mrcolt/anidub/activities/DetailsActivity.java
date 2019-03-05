@@ -3,7 +3,6 @@ package ru.mrcolt.anidub.activities;
 import android.os.Bundle;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +32,6 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        Fresco.initialize(this);
         viewPager = findViewById(R.id.details_view_pager);
         tabLayout = findViewById(R.id.tab_layout);
         toolbar = findViewById(R.id.details_toolbar);

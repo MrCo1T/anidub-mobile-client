@@ -6,9 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import com.facebook.drawee.backends.pipeline.Fresco;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +25,7 @@ import ru.mrcolt.anidub.R;
 import ru.mrcolt.anidub.adapters.MediaListAdapter;
 import ru.mrcolt.anidub.listeners.EndlessScrollListener;
 import ru.mrcolt.anidub.models.MediaListModel;
+import ru.mrcolt.anidub.utils.DialogUtils;
 import ru.mrcolt.anidub.utils.NetworkUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private ProgressBar progressBar;
     private NetworkUtils okNetworkUtils = new NetworkUtils();
+    private int currentPage = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +49,10 @@ public class MainActivity extends AppCompatActivity {
         initComponents();
         configComponents();
 
-        loadMediaList(1);
+        loadMediaList(currentPage);
     }
 
     private void initComponents() {
-        Fresco.initialize(this);
         recyclerView = findViewById(R.id.media_list_id);
         progressBar = findViewById(R.id.media_loading);
         mediaListAdapter = new MediaListAdapter(this, mediaListModels);
@@ -66,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mediaListAdapter);
         recyclerView.addOnScrollListener(new EndlessScrollListener(linearLayoutManager) {
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                loadMediaList(page);
+                currentPage++;
+                loadMediaList(currentPage);
             }
         });
     }
@@ -108,14 +107,14 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             prepareMediaList(body);
                         } catch (Exception e) {
-                            runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: Не удается обработать данные", Toast.LENGTH_LONG).show());
+                            DialogUtils.defaultAlert(MainActivity.this, "Ошибка", "Не удается обработать данные", "ОК");
                             e.printStackTrace();
                         }
                     }
 
                     @Override
                     public void onFailure(String e) {
-                        runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: сервер не доступен", Toast.LENGTH_LONG).show());
+                        DialogUtils.defaultAlert(MainActivity.this, "Ошибка", "Сервер не доступен", "ОК");
                     }
                 });
     }
@@ -123,22 +122,27 @@ public class MainActivity extends AppCompatActivity {
     private void prepareMediaList(String body) throws JSONException {
         JSONObject result = new JSONObject(body);
         JSONArray resultData = result.getJSONArray("data");
-        for (int i = 0; i < resultData.length(); i++) {
-            JSONObject jsonData = (JSONObject) resultData.get(i);
-            JSONObject title = jsonData.getJSONObject("title");
-            mediaListModels.add(new MediaListModel(
-                    jsonData.getString("poster"),
-                    title.getString("ru"),
-                    title.getString("en"),
-                    jsonData.getString("rating"),
-                    jsonData.getString("year"),
-                    jsonData.getString("genre"),
-                    jsonData.getString("country"),
-                    jsonData.getString("episode"),
-                    jsonData.getString("description"),
-                    jsonData.getString("news_id")));
+        if (!resultData.isNull(0)) {
+            for (int i = 0; i < resultData.length(); i++) {
+                JSONObject jsonData = (JSONObject) resultData.get(i);
+                JSONObject title = jsonData.getJSONObject("title");
+                mediaListModels.add(new MediaListModel(
+                        jsonData.getString("poster"),
+                        title.getString("ru"),
+                        title.getString("en"),
+                        jsonData.getString("rating"),
+                        jsonData.getString("year"),
+                        jsonData.getString("genre"),
+                        jsonData.getString("country"),
+                        jsonData.getString("episode"),
+                        jsonData.getString("description"),
+                        jsonData.getString("news_id")));
+            }
+            mediaListAdapter.notifyItemInserted(mediaListModels.size());
+        } else {
+            currentPage++;
+            loadMediaList(currentPage);
         }
-        runOnUiThread(() -> mediaListAdapter.notifyItemInserted(mediaListModels.size()));
         progressBar.setVisibility(View.INVISIBLE);
     }
 }

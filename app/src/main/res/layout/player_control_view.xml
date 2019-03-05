@@ -46,7 +46,9 @@
             android:layout_margin="50dp"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_backward_10" />
+            android:src="@drawable/ic_backward_10"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <ImageButton
             android:id="@id/exo_play"
@@ -106,8 +108,8 @@
 
         <ImageButton
             android:id="@+id/player_zoom"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="15dp"
             android:background="@null"
             android:scaleType="fitXY"
@@ -115,8 +117,8 @@
 
         <ImageButton
             android:id="@+id/player_fullscreen"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="10dp"
             android:background="@null"
             android:scaleType="fitXY"

@@ -6,7 +6,7 @@ android {
         applicationId "ru.mrcolt.anidubmobile"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 2
+        versionCode 3
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resConfig "ru"
@@ -53,16 +53,16 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.volley:volley:1.1.1'                       // http client
-    implementation 'com.facebook.fresco:fresco:1.12.1'                     // image loader
+    implementation 'com.github.bumptech.glide:glide:4.9.0'                 // image loader
     implementation 'com.makeramen:roundedimageview:2.3.0'                  // RoundedImageView
     implementation 'com.github.MZCretin:ExpandableTextView:1.5.2'          // ExpandableTextView
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.5'     // player core
-    implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.5'      // player HLS
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.5'       // player ui
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6'     // player core
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.6'      // player HLS
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6'       // player ui
     implementation 'com.github.mohammadatif:Animatoo:master'               // animations
     implementation 'me.zhanghai.android.materialratingbar:library:1.3.2'   // rating bar
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'              // recycler view
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'com.github.searchy2:CustomAlertViewDialogue:2.5.1'
+    implementation 'com.github.searchy2:CustomAlertViewDialogue:2.5.1'     // dialogs
 }

@@ -2,7 +2,6 @@ package ru.mrcolt.anidub.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,7 +53,9 @@ public class MediaSearchListAdapter extends RecyclerView.Adapter<MediaSearchList
 
         holder.film_rating_bar.setRating(ratingBar);
 
-        holder.film_poster.setImageURI(Uri.parse(current.getPoster()));
+        Glide.with(context)
+                .load(current.getPoster())
+                .into(holder.film_poster);
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailsActivity.class);

@@ -22,6 +22,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        tools:replace="android:label"
         tools:ignore="GoogleAppIndexingWarning">
 
         <provider

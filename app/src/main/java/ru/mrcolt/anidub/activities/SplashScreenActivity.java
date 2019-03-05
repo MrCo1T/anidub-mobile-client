@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,6 +24,7 @@ import java.util.HashMap;
 import androidx.appcompat.app.AppCompatActivity;
 import ru.mrcolt.anidub.BuildConfig;
 import ru.mrcolt.anidub.utils.ApkInstallerUtils;
+import ru.mrcolt.anidub.utils.DialogUtils;
 import ru.mrcolt.anidub.utils.NetworkUtils;
 import ru.mrcolt.anidub.utils.PermissionUtils;
 import stream.customalert.CustomAlertDialogue;
@@ -47,10 +47,10 @@ public class SplashScreenActivity extends AppCompatActivity {
                             JSONObject result = new JSONObject(body);
                             String download = result.getJSONObject("data").getString("download");
                             int version = result.getJSONObject("data").getInt("version");
-                            if (BuildConfig.VERSION_CODE < version) {
+                            if (BuildConfig.VERSION_CODE != version) {
                                 CustomAlertDialogue.Builder alert = new CustomAlertDialogue.Builder(SplashScreenActivity.this)
                                         .setStyle(CustomAlertDialogue.Style.DIALOGUE)
-                                        .setTitle("Обновления приложения")
+                                        .setTitle("Обновление приложения")
                                         .setMessage("Доступна новая версия приложения. Если не обновить, могут возникнуть ошибки.")
                                         .setPositiveText("Обновить сейчас")
                                         .setNegativeText("Позже")
@@ -78,7 +78,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(String e) {
-                        runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: проверьте подключение к интернету", Toast.LENGTH_LONG).show());
+                        DialogUtils.defaultAlert(SplashScreenActivity.this, "Отсутствует соединение", "Проверьте соединение с интернетом", "ОК");
                     }
                 });
     }
@@ -134,7 +134,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 //External directory path to save file
                 folder = Environment.getExternalStorageDirectory() + File.separator + "/";
 
-                //Create androiddeft folder if it does not exist
+                //Create folder if it does not exist
                 File directory = new File(folder);
 
                 if (!directory.exists()) {

@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-import com.facebook.drawee.backends.pipeline.Fresco;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +23,7 @@ import ru.mrcolt.anidub.R;
 import ru.mrcolt.anidub.adapters.MediaSearchListAdapter;
 import ru.mrcolt.anidub.listeners.EndlessScrollListener;
 import ru.mrcolt.anidub.models.MediaSearchListModel;
+import ru.mrcolt.anidub.utils.DialogUtils;
 import ru.mrcolt.anidub.utils.NetworkUtils;
 
 public class SearchActivity extends AppCompatActivity {
@@ -37,6 +36,7 @@ public class SearchActivity extends AppCompatActivity {
     private TextView searchTitle;
     private String searchQuery;
     private ProgressBar progressBar;
+    private int currentPage = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +50,10 @@ public class SearchActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        loadMediaSearchList(searchQuery, 1);
+        loadMediaSearchList(searchQuery, currentPage);
     }
 
     private void initComponents() {
-        Fresco.initialize(this);
         toolbar = findViewById(R.id.search_toolbar);
         searchTitle = findViewById(R.id.search_title);
         recyclerView = findViewById(R.id.media_search_list_id);
@@ -70,6 +69,7 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.addOnScrollListener(new EndlessScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                currentPage++;
                 loadMediaSearchList(searchQuery, page);
             }
         });
@@ -87,38 +87,6 @@ public class SearchActivity extends AppCompatActivity {
         return true;
     }
 
-//    private void clearRecyclerView() {
-//        mediaSearchListModels.clear();
-//        mediaSearchListAdapter.notifyDataSetChanged();
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.main_menu, menu);
-//        MenuItem menuItem = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) menuItem.getActionView();
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                clearRecyclerView();
-//                searchView.setIconified(true);
-//                menuItem.collapseActionView();
-//                searchTitle.setText(query);
-//                loadMediaSearchList(query, 1);
-//
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return true;
-//            }
-//
-//        });
-//        searchView.setOnCloseListener(() -> true);
-//        return true;
-//    }
-
     private void loadMediaSearchList(String query, int page) {
         NetworkUtils okNetworkUtils = new NetworkUtils();
         okNetworkUtils.sendGETRequest(this,
@@ -130,14 +98,14 @@ public class SearchActivity extends AppCompatActivity {
                         try {
                             prepareMediaSearchList(body);
                         } catch (Exception e) {
-                            runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: Не удается обработать данные", Toast.LENGTH_LONG).show());
+                            DialogUtils.defaultAlert(SearchActivity.this, "Ошибка", "Не удается обработать данные", "ОК");
                             e.printStackTrace();
                         }
                     }
 
                     @Override
                     public void onFailure(String e) {
-                        runOnUiThread(() -> Toast.makeText(getBaseContext(), "Ошибка: сервер не доступен", Toast.LENGTH_LONG).show());
+                        DialogUtils.defaultAlert(SearchActivity.this, "Ошибка", "Сервер не доступен", "ОК");
                     }
                 });
     }
@@ -145,22 +113,27 @@ public class SearchActivity extends AppCompatActivity {
     private void prepareMediaSearchList(String body) throws JSONException {
         JSONObject result = new JSONObject(body);
         JSONArray resultData = result.getJSONArray("data");
-        for (int i = 0; i < resultData.length(); i++) {
-            JSONObject jsonData = (JSONObject) resultData.get(i);
-            JSONObject title = jsonData.getJSONObject("title");
-            mediaSearchListModels.add(new MediaSearchListModel(
-                    jsonData.getString("poster"),
-                    title.getString("ru"),
-                    title.getString("en"),
-                    jsonData.getString("rating"),
-                    jsonData.getString("year"),
-                    jsonData.getString("genre"),
-                    jsonData.getString("country"),
-                    jsonData.getString("episode"),
-                    jsonData.getString("description"),
-                    jsonData.getString("news_id")));
+        if (!resultData.isNull(0)) {
+            for (int i = 0; i < resultData.length(); i++) {
+                JSONObject jsonData = (JSONObject) resultData.get(i);
+                JSONObject title = jsonData.getJSONObject("title");
+                mediaSearchListModels.add(new MediaSearchListModel(
+                        jsonData.getString("poster"),
+                        title.getString("ru"),
+                        title.getString("en"),
+                        jsonData.getString("rating"),
+                        jsonData.getString("year"),
+                        jsonData.getString("genre"),
+                        jsonData.getString("country"),
+                        jsonData.getString("episode"),
+                        jsonData.getString("description"),
+                        jsonData.getString("news_id")));
+            }
+            mediaSearchListAdapter.notifyItemInserted(mediaSearchListModels.size());
+        } else {
+            currentPage++;
+            loadMediaSearchList(searchQuery, currentPage);
         }
-        runOnUiThread(() -> mediaSearchListAdapter.notifyItemInserted(mediaSearchListModels.size()));
         progressBar.setVisibility(View.INVISIBLE);
     }
 }
